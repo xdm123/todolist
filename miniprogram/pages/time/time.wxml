@@ -1,0 +1,10 @@
+<view>
+  <calendar bindOnDayClick="onDayClick" days-style='{{daysStyle}}' />
+  <view>
+    <view class="list_wrap" wx:for='{{list}}'>
+      <image wx:if='{{item.done}}' class="doneimage" src="../../images/done.png"></image>
+      <image wx:if='{{!item.done}}' class="doneimage notdone" src="../../images/notdone.png"></image>
+      <view class="ctn">{{item.text}}</view>
+    </view>
+  </view>
+</view>

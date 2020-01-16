@@ -1,0 +1,76 @@
+/* miniprogram/pages/done/done.wxss */.wrap{
+  width:100%;
+  position: fixed;
+  top:160rpx;
+  bottom:0;
+  overflow: hidden;
+  padding-top:20rpx;
+}
+.time{
+  width:90%;
+  margin:0 auto;
+  height:80rpx;
+  line-height: 80rpx;
+  color:#444;
+  font-weight: 600;
+  text-align: center;
+  /* border-bottom: 1px solid #444; */
+}
+.add_input{
+  width:90%;
+  display: block;
+  margin:0 auto;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border:1px dotted #444;
+  box-sizing: border-box;
+}
+.scroll_box{
+  height:100%;
+  width:90%;
+  margin:0 auto;
+  overflow: hidden;
+}
+.list_wrap{
+  width:90%;
+  height:80rpx;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  display: flex;
+  background:#fff;
+  color:#333;
+  display: flex;
+  margin:0 auto;
+  margin-bottom:20rpx;
+  justify-content: space-around;
+  align-items: center;
+}
+.label{
+  width:30rpx;
+  height:30rpx;
+  border:1px solid #999;
+  border-radius: 3px;
+}
+.ctn{
+  width:75%;
+}
+.remove image{
+  width:36rpx;
+  height:36rpx;
+}
+.doneimage{
+  width:35rpx;
+  height:35rpx;
+}
+.done_title{
+  width:90%;
+  box-sizing: border-box;
+  height:80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin:0 auto;
+  color:green;
+  border:1px dotted green;
+  margin-bottom:20rpx;
+}

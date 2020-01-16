@@ -1,0 +1,54 @@
+{
+  "pages": [
+    "pages/home",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room",
+    "pages/login/login",
+    "pages/time/time",
+    "pages/done/done",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "TODOLIST",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "calendar": "/components/calendar/index"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home",
+        "text": "DO"
+      },
+      {
+        "pagePath": "pages/done/done",
+        "text": "DONE"
+      },
+      {
+        "pagePath": "pages/time/time",
+        "text": "TIME"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "MY"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

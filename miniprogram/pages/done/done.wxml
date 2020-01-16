@@ -1,0 +1,20 @@
+<view wx:if='{{open == "true"}}'>
+  <view class="time">{{time}}</view>
+  <view class="done_title">已完成事项</view>
+  <view wx:for='{{list}}' wx:key='{{item._id}}' class="list_wrap" wx:if='{{item.done}}'>
+      <image class="doneimage" src="../../images/done.png"></image>
+      <view class="ctn">{{item.text}}</view>
+      <view  
+      data-id='{{item._id}}' 
+      data-text='{{item.text}}'
+      class="remove"
+      bindtap="returnFn"
+      ><image src="../../images/return.png"></image></view>
+  </view>
+</view>
+<!-- <view wx:else>
+  <view wx:for='{{listtest}}' wx:key='{{item._id}}' class="list_wrap" wx:if='{{item.done == "true"}}'>
+      <image class="doneimage" src="../../images/done.png"></image>
+      <view class="ctn">{{item.text}}</view>
+  </view>
+</view> -->

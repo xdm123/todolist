@@ -1,0 +1,6 @@
+<button
+  open-type="getUserInfo" 
+  bindgetuserinfo="bindGetUserInfo"
+  type="primary"
+  class="loginbtn"
+>授权登录</button>

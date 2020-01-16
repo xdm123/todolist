@@ -1,0 +1,40 @@
+<view wx:if='{{open == "true"}}'>
+  <view class="time">{{time}}</view>
+  <input 
+  placeholder="添加+"
+  maxlength='15'
+  confirm-type='done'
+  bindconfirm='addList'
+  class="add_input"
+  value='{{inputvalue}}'
+  ></input>
+  <view class="wrap">
+    <scroll-view scroll-y class="scroll_box" wx:if='{{list}}'>
+      <view wx:for='{{list}}' wx:key='{{item}}' class="list_wrap" wx:if='{{!item.done}}'>
+      <view 
+      data-text='{{item.text}}'
+      data-id='{{item._id}}'
+      bindtap="doneFn" 
+      class="label"></view>
+      <view class="ctn">{{item.text}}</view>
+      <view 
+      class="remove" 
+      data-id='{{item._id}}' 
+      data-text='{{item.text}}'
+      bindtap="removeFn"><image src="../images/remove.png"></image></view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- 
+<view class="test_box" wx:else>
+  <view wx:for='{{listtest}}' wx:key='{{item}}' class="list_wrap" wx:if='{{item.done == "false"}}'>
+    <view 
+      data-text='{{item.text}}'
+      data-id='{{item._id}}'
+      bindtap="doneFnTest" 
+      class="label">
+    </view>
+    <view class="ctn">{{item.text}}</view>
+  </view>
+</view> -->

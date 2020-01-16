@@ -1,0 +1,5 @@
+/* miniprogram/pages/login/login.wxss */
+.loginbtn{
+  margin-top:300rpx;
+  width:50%;
+}
