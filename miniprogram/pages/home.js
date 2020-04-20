@@ -89,6 +89,8 @@ Page({
     var _this = this;
     var timedata = _this.data.time
     var value = e.detail.value;
+    var openid = app.globalData.openid;
+    console.log('1111111111111111111111111',openid)
     if(value == ''){
       wx.showToast({
         title: '内容不能为空',
@@ -105,7 +107,16 @@ Page({
     })
     .then(res => {
       console.log(res)
+      wx.cloud.callFunction({
+        name: 'addlist',
+        data: {
+          openid:openid
+        },
+        complete: res => {
+        }
+      })
       _this.getListData();
+      
     })
     .catch(res => {
       wx.showModal({
@@ -169,6 +180,7 @@ Page({
     console.log('标记为完成');
     var text = e.currentTarget.dataset.text
     var _id = e.currentTarget.dataset.id
+    var openid = e.currentTarget.dataset.openid
     console.log(_id)
     wx.showModal({
       title: '标记为完成',
@@ -180,7 +192,8 @@ Page({
             name: 'done',
             data: {
               id:_id,
-              done:true
+              done:true,
+              openid:openid
             },
             complete: res => {
               _this.getListData()
@@ -193,9 +206,12 @@ Page({
     })
   },
 
+  
+
   //删除任务
   removeFn:function(e){
     var id = e.currentTarget.dataset.id
+    var openid = e.currentTarget.dataset.openid
     var text = e.currentTarget.dataset.text
     var _this = this
     wx.showModal({
@@ -207,7 +223,8 @@ Page({
           wx.cloud.callFunction({
             name: 'remove',
             data: {
-              id:id
+              id:id,
+              openid:openid
             },
             complete: res => {
               _this.getListData()

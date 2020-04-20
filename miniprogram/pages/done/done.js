@@ -67,6 +67,7 @@ Page({
   returnFn:function(e){
     var id = e.currentTarget.dataset.id
     var text = e.currentTarget.dataset.text
+    var openid = e.currentTarget.dataset.openid
     var _this = this
     wx.showModal({
       title: '移至待办',
@@ -78,7 +79,8 @@ Page({
             name: 'back',
             data: {
               id:id,
-              done:false
+              done:false,
+              openid:openid
             },
             complete: res => {
               _this.getListData()

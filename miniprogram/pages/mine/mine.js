@@ -1,5 +1,8 @@
 // miniprogram/pages/mine/mine.js
 var app = getApp()
+const db = wx.cloud.database();
+const todosCollection = db.collection('todolist');
+const userinfoCollection = db.collection('userinfo');
 Page({
 
   /**
@@ -7,7 +10,11 @@ Page({
    */
   data: {
     login:false,
-    userInfo:''
+    userInfo:'',
+    total:'',
+    successNum:'',
+    failNum:'',
+    star:[0,0,0,0,0,0,0,0,0,0]
   },
 
   /**
@@ -15,6 +22,81 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  //获取清单列表
+  getListData:function(){
+    var _openid = app.globalData.openid;
+    var _this = this
+    todosCollection.where({
+      _openid:_openid
+    }).get().then(res => {
+      console.log(res);
+      var total = res.data.length; //历史总任务数
+      var successNum = 0; //完成数
+      var failNum = 0; //未完成数
+      res.data.map(function(item){
+        if(item.done){
+          successNum += 1
+        }else{
+          failNum += 1
+        }
+      })
+      var star = Math.floor(successNum / total * 10);
+      if(total == 0){
+        var score = 0;
+      }else{
+        var score = (successNum/total).toFixed(2);
+      }
+      var stararr = [0,0,0,0,0,0,0,0,0,0]
+      for(var i = 0 ; i < star ; i ++){
+        stararr[i] = 1
+      }
+      console.log(stararr)
+      _this.setData({
+        total:total,
+        successNum:successNum,
+        failNum:failNum,
+        star:stararr,
+        score:score
+      })
+      this.createUser(score)
+    })
+  },
+
+  createUser:function(score){
+    console.log('创建用户或更新用户评分');
+    var _openid = app.globalData.openid;
+
+    userinfoCollection.where({
+      _openid:_openid
+    }).get().then(res => {
+      console.log('获取用户信息',res);
+      if(res.data.length == 0){
+        console.log('需要创建');
+        userinfoCollection.add({
+          data:{
+            userInfo:app.globalData.userinfo,
+            score:score
+          }
+        }).then(res=>{
+          console.log('success')
+        })
+      }else{
+        console.log('更新用户评分数据');
+        console.log(_openid,score)
+        wx.cloud.callFunction({
+          name: 'refreshScore',
+          data: {
+            _openid:_openid,
+            score:score,
+            userdata:app.globalData.userinfo
+          },
+          complete: res => {
+          }
+        })
+      }
+    })
   },
 
   /**
@@ -41,6 +123,7 @@ Page({
           login:true,
           userInfo:res
         })
+        _this.getListData()
       },
       fail:function(){
         _this.setData({
@@ -55,7 +138,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getUserInfo()
+    this.getUserInfo();
   },
 
   /**

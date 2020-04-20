@@ -1,0 +1,43 @@
+/* miniprogram/pages/rank/rank.wxss */
+.title{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color:#333;
+  line-height: 100rpx;
+}
+.item{
+  padding:20rpx 40rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rank{
+  width:40rpx;
+  height:40rpx;
+  color:#fff;
+  background:skyblue;
+  border-radius: 50%;
+  text-align: center;
+  float:left;
+}
+.item_left{
+  display: flex;
+  align-items: center;
+}
+.headimg image{
+  display: block;
+  width:80rpx;
+  height:80rpx;
+  border-radius: 50%;
+  float:left;
+  margin-left:20rpx;
+}
+.name{
+  font-size: 14px;
+  margin-left:20rpx;
+}
+.score{
+  font-size: 14px;
+}

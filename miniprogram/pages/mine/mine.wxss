@@ -18,3 +18,46 @@
   text-align: center;
   line-height: 100rpx;
 }
+.data_text{
+  height:75rpx;
+  line-height: 75rpx;
+  font-size: 14px;
+  color:#333;
+}
+.data_box{
+  width:80%;
+  padding-bottom:20rpx;
+  margin:0 auto;
+border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 12rpx 30rpx 0px rgba(0, 0, 0, 0.06);
+}
+.text1{
+  font-size: 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #e1dede;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 100rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+}
+.text3{
+  color:green;
+}
+.text4{
+  color:red;
+}
+.star{
+  height: 50rpx;
+  margin-top: 34rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.star image{
+  width:40rpx;
+  height:40rpx;
+  margin-left:10rpx;
+}

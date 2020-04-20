@@ -1,0 +1,11 @@
+<view>
+  <view class="title">执行情况</view>
+  <view class="item" wx:for='{{list}}'>
+    <view class='item_left'>
+      <view class="rank">{{index + 1}}</view>
+      <view class="headimg"><image src="{{item.userInfo.userInfo.avatarUrl}}"></image></view>
+      <view class="name">{{item.userInfo.userInfo.nickName}}</view>
+    </view>
+    <view class="score">任务完成率:<text style="color:green;font-weight:600;">{{item.score}}</text></view>
+  </view>
+</view>

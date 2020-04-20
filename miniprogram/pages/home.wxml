@@ -1,7 +1,7 @@
 <view wx:if='{{open == "true"}}'>
   <view class="time">{{time}}</view>
   <input 
-  placeholder="添加+"
+  placeholder="+"
   maxlength='15'
   confirm-type='done'
   bindconfirm='addList'
@@ -14,19 +14,21 @@
       <view 
       data-text='{{item.text}}'
       data-id='{{item._id}}'
+      data-openid='{{item._openid}}'
       bindtap="doneFn" 
       class="label"></view>
       <view class="ctn">{{item.text}}</view>
       <view 
       class="remove" 
       data-id='{{item._id}}' 
+      data-openid='{{item._openid}}'
       data-text='{{item.text}}'
       bindtap="removeFn"><image src="../images/remove.png"></image></view>
       </view>
     </scroll-view>
   </view>
 </view>
-<!-- 
+
 <view class="test_box" wx:else>
   <view wx:for='{{listtest}}' wx:key='{{item}}' class="list_wrap" wx:if='{{item.done == "false"}}'>
     <view 
@@ -37,4 +39,4 @@
     </view>
     <view class="ctn">{{item.text}}</view>
   </view>
-</view> -->
+</view>

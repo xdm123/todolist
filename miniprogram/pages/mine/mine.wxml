@@ -10,5 +10,18 @@
       <image class="headimg" src="{{userInfo.userInfo.avatarUrl}}"></image>
     </view>
     <view class="nickname">{{userInfo.userInfo.nickName}}</view>
+    <view class="data_box">
+      <view class="data_text text1">历史大数据</view>
+      <view class="data_text">总任务数：{{total}}项</view>
+      <view class="data_text text3" >完成：{{successNum}}项</view>
+      <view class="data_text text4">未完成：{{failNum}}项</view>
+    </view>
+    <view class="data_box" style="margin-top:40rpx;">
+      <view class="data_text text1">执行力评分</view>
+      <view class="star">
+        <image wx:for='{{star}}' 
+        src="{{item === 0 ? '../../images/star.png' : '../../images/starlight.png'}}"></image>
+      </view>
+    </view>
   </view>
 </view>

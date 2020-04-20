@@ -16,6 +16,58 @@ exports.main = async (event, context) => {
       }
     }).then(res=>{
       console.log('更新成功')
+      db.collection('todolist').where({
+        _openid:event.openid
+      }).get().then(res => {
+        console.log(res);
+        var total = res.data.length; //历史总任务数
+        var successNum = 0; //完成数
+        var failNum = 0; //未完成数
+        res.data.map(function(item){
+          if(item.done){
+            successNum += 1
+          }else{
+            failNum += 1
+          }
+        })
+        
+        if(total == 0){
+          var score = 0;
+        }else{
+          var score = (successNum/total).toFixed(2);
+        }
+
+
+        console.log('dadsad',event.id)
+        db.collection('userinfo').where({
+          _openid:event.openid
+        }).get().then(res => {
+          console.log('获取用户信息',res);
+          if(res.data.length == 0){
+            console.log('需要创建');
+            userinfoCollection.add({
+              data:{
+                userInfo:app.globalData.userinfo,
+                score:score
+              }
+            }).then(res=>{
+              console.log('success')
+            })
+          }else{
+            console.log('更新用户评分数据');
+            db.collection('userinfo').where({
+              _openid:event.openid
+            }).update({
+              data:{
+                score:score
+              }
+            }).then(res=>{
+              console.log('更新分数')
+            })
+          }
+        })
+        
+      })
     })
   })
   
